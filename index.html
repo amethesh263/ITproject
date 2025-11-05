@@ -1,129 +1,149 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html>
 <head>
   
   <style>
-  
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background-color: #333;
-  width: 100vw;
-  min-width: 100%;
-  display: flex; /* use flexbox */
-  align-items: center;
-}
+  /* Nav container: place your full-width background and centering here */
+  .nav-container {
+    width: 100%;
+    background-color: #333; /* move the nav background here so dropdowns can overflow */
+    position: relative;     /* keep it positioned so absolute children can position correctly */
+    overflow: visible;      /* ensure dropdowns are not clipped */
+  }
+
+  /* Inner wrapper to center the nav and constrain max width */
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: transparent; /* background moved to .nav-container */
+    width: 100%;
+    display: flex; /* use flexbox */
+    align-items: center;
+  }
     
+  li {
+    position: relative;
+  }
 
-li {
-  position: relative;
-  /* float: left; <-- REMOVE if using flexbox */
-}
-
-li a, .dropbtn {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 24px;
-  text-decoration: none;
-  cursor: pointer;
-  background: transparent;
-}
+  li a, .dropbtn {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 24px;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+  }
     
+  a:hover:not(.active), .dropdown:hover .dropbtn {
+    background-color: #111;
+  }
 
-a:hover:not(.active), .dropdown:hover .dropbtn {
-  background-color: #111;
-}
+  .active {
+    background-color: #04AA6D;
+  }
 
-.active {
-  background-color: #04AA6D;
-}
+  .dropbtn {
+    background-color: transparent;
+    border: none;
+  }
 
-.dropbtn {
-  background-color: #333;
-  border: none;
-}
+  .dropdown {
+    display: inline-block;
+  }
 
-.dropdown {
-  display: inline-block;
-}
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 100%;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 2;
-}
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+  .dropdown-content a {
+    color: black;
+    padding: 10px 18px;
+    text-decoration: none;
+    display: block;
+  }
 
-.dropdown-content a {
-  color: black;
-  padding: 10px 18px;
-  text-decoration: none;
-  display: block;
-}
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-/* Style for search box inside nav */
-li input[type="text"] {
-  margin-top: 8px;
-  margin-left: 12px;
-  padding: 8px;
-  font-size: 10px;
-}
+  /* Style for search box inside nav */
+  li input[type="text"] {
+    margin-top: 8px;
+    margin-left: 12px;
+    padding: 8px;
+    font-size: 10px;
+  }
     
   </style>
 </head>
 <body>
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li class="dropdown">
-    <a class="dropbtn" href="#men">Men</a>
-    <div class="dropdown-content">
-      <a href="#trousers">Trousers</a>
-      <a href="#cargos">Cargos</a>
-      <a href="#shirts">Shirts</a>
-      <a href="#jackets">Jackets</a>
-      <a href="#shoes">Shoes</a>
-    </div>
-  </li>
-  <li class="dropdown">
-    <a class="dropbtn" href="#women">Women</a>
-    <div class="dropdown-content">
-      <a href="#trousers">Trousers</a>
-      <a href="#cargos">Cargos</a>
-      <a href="#shirts">Shirts</a>
-      <a href="#jackets">Jackets</a>
-      <a href="#shoes">Shoes</a>
-    </div>
-  </li>
- <li class="dropdown">
-    <a class="dropbtn" href="#kids">Kids</a>
-    <div class="dropdown-content">
-      <a href="#trousers">Trousers</a>
-      <a href="#cargos">Cargos</a>
-      <a href="#shirts">Shirts</a>
-      <a href="#jackets">Jackets</a>
-      <a href="#shoes">Shoes</a>
-    </div>
-  </li>
-  <li><a href="#location">Location</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
-  <li><a href="#setting">Setting</a></li>
-  <li>
-   <input type="text" placeholder="Search.." style="padding: 8px; width: 255px; font-size: 10px;">
-  </li>
-</ul>
+
+<!-- Add a container around the navigation here.
+     .nav-container provides the full-width background and keeps dropdowns from being clipped.
+     .nav-inner centers the nav and constrains its max width. -->
+<div class="nav-container">
+  <div class="nav-inner">
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li class="dropdown">
+        <a class="dropbtn" href="#men">Men</a>
+        <div class="dropdown-content">
+          <a href="#trousers">Trousers</a>
+          <a href="#cargos">Cargos</a>
+          <a href="#shirts">Shirts</a>
+          <a href="#jackets">Jackets</a>
+          <a href="#shoes">Shoes</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a class="dropbtn" href="#women">Women</a>
+        <div class="dropdown-content">
+          <a href="#trousers">Trousers</a>
+          <a href="#cargos">Cargos</a>
+          <a href="#shirts">Shirts</a>
+          <a href="#jackets">Jackets</a>
+          <a href="#shoes">Shoes</a>
+        </div>
+      </li>
+     <li class="dropdown">
+        <a class="dropbtn" href="#kids">Kids</a>
+        <div class="dropdown-content">
+          <a href="#trousers">Trousers</a>
+          <a href="#cargos">Cargos</a>
+          <a href="#shirts">Shirts</a>
+          <a href="#jackets">Jackets</a>
+          <a href="#shoes">Shoes</a>
+        </div>
+      </li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#setting">Setting</a></li>
+      <li>
+       <input type="text" placeholder="Search.." style="padding: 8px; width: 255px; font-size: 10px;">
+      </li>
+    </ul>
+  </div>
+</div>
+
 </body>
 </html>
