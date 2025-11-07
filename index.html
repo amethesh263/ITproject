@@ -6,13 +6,32 @@
   <style>
   /* Nav container: place your full-width background and centering here */
   .nav-container {
-    width: 60%;
-    background-color: #333;  
-    position: relative;     
-    overflow: visible;  
-  align-items: center;
-  }
- 
+  width: 60%;
+  margin: 0 auto; /* Centers the whole nav bar horizontally */
+  background-color: #333;
+  position: relative;
+  overflow: visible;
+
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center;     /* Centers content vertically */
+  padding: 10px 0;
+}
+
+.nav-container ul {
+  list-style: none;
+  display: flex;
+  gap: 40px; /* Even space between items */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
   /* Inner wrapper to center the nav and constrain max width */
   .nav-inner {
     max-width: 1200px;
